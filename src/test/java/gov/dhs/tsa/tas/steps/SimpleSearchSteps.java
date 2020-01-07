@@ -11,11 +11,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.log4testng.Logger;
 
 import java.util.List;
 
 public class SimpleSearchSteps {
 
+    Logger log = Logger.getLogger(SimpleSearchSteps.class);
     long timeOut = (long) 5.0;
 
     By googleIconBy = By.id("hplogo");
@@ -26,6 +28,7 @@ public class SimpleSearchSteps {
     WebDriver driver;
 
     public SimpleSearchSteps() {
+        log.debug("Creating Chrome Browser.");
         driver = DeviceFactory.getDevice("Chrome");
     }
 
@@ -57,7 +60,7 @@ public class SimpleSearchSteps {
         WebDriverWait wait = new WebDriverWait(driver, timeOut);
         wait.until(ExpectedConditions.presenceOfElementLocated(logoBy));
         List<WebElement> elements = driver.findElements(pagesBy);
-        System.out.println(" * * * * * * * * * " + elements.size());
+        log.debug("There are " + elements.size() + " (hopefully 1) elements matching page 2");
         Assert.assertTrue(elements.size() == 1);
     }
 
