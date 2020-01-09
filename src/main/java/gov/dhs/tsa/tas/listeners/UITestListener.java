@@ -27,7 +27,7 @@ public class UITestListener extends TestListener {
     @Override
     public void onStart(ITestContext context){
         super.onStart(context);
-        context.setAttribute(BROWSER, new DeviceFactory().getDevice("chrome"));
+        context.setAttribute(BROWSER, DeviceFactory.getDevice("chrome"));
     }
 
     /**
