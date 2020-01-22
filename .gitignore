@@ -1,18 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea/.gitignore
-.idea/atlassian-ide-plugin.xml
-.idea/azureSettings.xml
-.idea/codeStyles/
-.idea/compiler.xml
-.idea/dbnavigator.xml
-.idea/emacs.xml
-.idea/encodings.xml
-.idea/git_toolbox_prj.xml
-.idea/misc.xml
-.idea/serialmonitor_settings.xml
-.idea/sonarlint/
-.idea/uiDesigner.xml
-.idea/vcs.xml
+.idea/*
 TestingWorkshop.iml
 /target/
 .classpath
