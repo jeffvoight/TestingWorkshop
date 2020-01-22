@@ -54,7 +54,7 @@
                             <file>src/test/resources/testng.integration.xml</file>
                         </suiteXmlFiles>
                         <parallel>methods</parallel>
-                        <threadCount>3</threadCount>
+                        <threadCount>5</threadCount>
                         <properties>
                             <property>
                                 <name>surefire.testng.verbose</name>
