@@ -16,6 +16,6 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
         tags = #stringArray($tags),
 #end
         glue = #stringArray($glue))
-@Listeners({ gov.dhs.tsa.tas.listeners.UITestListener.class })
+@Listeners({ com.afs.tas.listeners.UITestListener.class })
 public class $className extends AbstractTestNGCucumberTests {
 }

@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>gov.dhs.tsa.tas</groupId>
+    <groupId>com.afs.tas</groupId>
     <artifactId>TestingWorkshop</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -63,7 +63,7 @@
                             <property>
                                 <name>listener</name>
                                 <value>
-                                    gov.dhs.tsa.tas.listeners.TestListener,gov.dhs.tsa.tas.listeners.SuiteListener,gov.dhs.tsa.tas.listeners.UITestListener
+                                    com.afs.tas.listeners.TestListener,com.afs.tas.listeners.SuiteListener,com.afs.tas.listeners.UITestListener
                                 </value>
                             </property>
                         </properties>
@@ -84,7 +84,7 @@
                             </goals>
                             <configuration>
                                 <glue>
-                                    <package>gov.dhs.tsa.tas.steps</package>
+                                    <package>com.afs.tas.steps</package>
                                 </glue>
                                 <plugins>
                                     <plugin>

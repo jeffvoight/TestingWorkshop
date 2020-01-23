@@ -10,12 +10,12 @@
         </run>
     </groups>
     <listeners>
-        <listener class-name="gov.dhs.tsa.tas.listeners.SuiteListener"/>
-        <listener class-name="gov.dhs.tsa.tas.listeners.TestListener"/>
+        <listener class-name="com.afs.tas.listeners.SuiteListener"/>
+        <listener class-name="com.afs.tas.listeners.TestListener"/>
     </listeners>
     <test name="Everything">
         <packages>
-            <package name="gov.dhs.tsa.tas.*"/>
+            <package name="com.afs.tas.*"/>
         </packages>
     </test>
 </suite>
