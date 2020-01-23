@@ -15,7 +15,7 @@
     </listeners>
     <test name="Devices">
         <packages>
-            <package name="gov.dhs.tsa.tas.devices.*"/>
+            <package name="com.afs.tas.devices.*"/>
         </packages>
     </test>
 

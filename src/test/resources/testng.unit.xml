@@ -16,8 +16,8 @@
     </listeners>
     <test name="Regression">
         <packages>
-            <package name="gov.dhs.tsa.tas.*">
-                <exclude name="gov.dhs.tsa.tas.devices"/>
+            <package name="com.afs.tas.*">
+                <exclude name="com.afs.tas.devices"/>
             </package>
         </packages>
     </test>

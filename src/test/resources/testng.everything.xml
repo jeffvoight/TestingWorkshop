@@ -15,7 +15,7 @@
     </listeners>
     <test name="Everything">
         <packages>
-            <package name="gov.dhs.tsa.tas.*"/>
+            <package name="com.afs.tas.*"/>
         </packages>
     </test>
 </suite>
