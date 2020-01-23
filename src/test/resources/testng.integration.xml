@@ -10,8 +10,8 @@
         </run>
     </groups>
     <listeners>
-        <listener class-name="gov.dhs.tsa.tas.listeners.SuiteListener"/>
-        <listener class-name="gov.dhs.tsa.tas.listeners.UITestListener"/>
+        <listener class-name="com.afs.tas.listeners.SuiteListener"/>
+        <listener class-name="com.afs.tas.listeners.UITestListener"/>
     </listeners>
     <test name="Devices">
         <packages>

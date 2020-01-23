@@ -63,7 +63,7 @@
                             <property>
                                 <name>listener</name>
                                 <value>
-                                    gov.dhs.tsa.tas.listeners.TestListener,gov.dhs.tsa.tas.listeners.SuiteListener,gov.dhs.tsa.tas.listeners.UITestListener
+                                    com.afs.tas.listeners.TestListener,com.afs.tas.listeners.SuiteListener,com.afs.tas.listeners.UITestListener
                                 </value>
                             </property>
                         </properties>
