@@ -18,6 +18,7 @@
         <packages>
             <package name="com.afs.tas.*">
                 <exclude name="com.afs.tas.devices"/>
+                <exclude name="com.afs.tas.steps"/>
             </package>
         </packages>
     </test>

@@ -71,42 +71,7 @@
                 </plugin>
 
                 <!-- Generate Parallel Cucumber -->
-                <plugin>
-                    <groupId>com.github.temyers</groupId>
-                    <artifactId>cucumber-jvm-parallel-plugin</artifactId>
-                    <version>4.2.0</version>
-                    <executions>
-                        <execution>
-                            <id>generateRunners</id>
-                            <phase>generate-test-sources</phase>
-                            <goals>
-                                <goal>generateRunners</goal>
-                            </goals>
-                            <configuration>
-                                <glue>
-                                    <package>com.afs.tas.steps</package>
-                                </glue>
-                                <plugins>
-                                    <plugin>
-                                        <name>json</name>
-                                    </plugin>
-                                    <plugin>
-                                        <name>html</name>
-                                    </plugin>
-                                </plugins>
-                                <useTestNG>true</useTestNG>
-                                <namingScheme>feature-title</namingScheme>
-                                <parallelScheme>SCENARIO</parallelScheme>
-                                <tags>
-                                    <tag>~@wip</tag>
-                                    <tag>~@unsafe</tag>
-                                    <tag>@smoke</tag>
-                                </tags>
-                                <customVmTemplate>src/test/resources/custom-runner.vm</customVmTemplate>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
+
                 <!-- Cucumber Tests -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -115,7 +80,7 @@
                     <configuration>
                         <useSystemClassLoader>false</useSystemClassLoader>
                         <includes>
-                            <include>**/*IT.java</include>
+                            <include>**/RunCucumberTest.java</include>
                         </includes>
                         <parallel>methods</parallel>
                         <threadCount>5</threadCount>
@@ -190,33 +155,6 @@
                         <additionalparam>-Xdoclint:none</additionalparam>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <groupId>net.masterthought</groupId>
-                    <artifactId>maven-cucumber-reporting</artifactId>
-                    <version>4.4.0</version>
-                    <executions>
-                        <execution>
-                            <id>execution</id>
-                            <phase>post-integration-test</phase>
-                            <goals>
-                                <goal>generate</goal>
-                            </goals>
-                            <configuration>
-                                <skip>${cucumber.reports.skip}</skip>
-                                <projectName>Testing Workshop</projectName>
-                                <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
-                                <inputDirectory>${project.build.directory}/cucumber-parallel</inputDirectory>
-                                <jsonFiles>
-                                    <param>**/*.json</param>
-                                </jsonFiles>
-                                <skippedFails>false</skippedFails>
-                                <parallelTesting>true</parallelTesting>
-                                <enableFlashCharts>true</enableFlashCharts>
-                                <checkBuildResult>true</checkBuildResult>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
             </plugins>
         </build>
 
@@ -242,26 +180,33 @@
                 <version>3.6.1</version>
             </dependency>
 
+                <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
+                <dependency>
+                    <groupId>io.cucumber</groupId>
+                    <artifactId>cucumber-core</artifactId>
+                    <version>2.4.0</version>
+                </dependency>
+
             <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-jvm -->
             <dependency>
                 <groupId>io.cucumber</groupId>
                 <artifactId>cucumber-jvm</artifactId>
-                <version>2.3.0</version>
+                <version>2.4.0</version>
                 <type>pom</type>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-testng -->
             <dependency>
-                <groupId>info.cukes</groupId>
+                <groupId>io.cucumber</groupId>
                 <artifactId>cucumber-testng</artifactId>
-                <version>1.2.5</version>
+                <version>2.4.0</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-picocontainer -->
             <dependency>
-                <groupId>info.cukes</groupId>
+                <groupId>io.cucumber</groupId>
                 <artifactId>cucumber-picocontainer</artifactId>
-                <version>1.2.5</version>
+                <version>2.4.0</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/org.testng/testng -->
