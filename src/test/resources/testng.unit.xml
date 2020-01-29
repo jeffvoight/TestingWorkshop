@@ -11,13 +11,14 @@
         </run>
     </groups>
     <listeners>
-        <listener class-name="gov.dhs.tsa.tas.listeners.SuiteListener"/>
-        <listener class-name="gov.dhs.tsa.tas.listeners.TestListener"/>
+        <listener class-name="com.afs.tas.listeners.SuiteListener"/>
+        <listener class-name="com.afs.tas.listeners.TestListener"/>
     </listeners>
     <test name="Regression">
         <packages>
-            <package name="gov.dhs.tsa.tas.*">
-                <exclude name="gov.dhs.tsa.tas.devices"/>
+            <package name="com.afs.tas.*">
+                <exclude name="com.afs.tas.devices"/>
+                <exclude name="com.afs.tas.steps"/>
             </package>
         </packages>
     </test>
