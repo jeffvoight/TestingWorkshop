@@ -14,3 +14,5 @@ Feature: Google Search Demonstration
     | searchTerm |
     | fish lip recipes |
     | chicken beak recipes |
+    | banana shake recipes |
+    | mango shake recipes  |
