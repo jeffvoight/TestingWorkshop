@@ -20,5 +20,6 @@ Feature: Google Search Demonstration
     | mango shake recipes  |
     | testing |
     | testing 2 |
+    |ice tea |
     
     
