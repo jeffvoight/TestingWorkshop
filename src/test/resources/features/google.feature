@@ -16,3 +16,7 @@ Feature: Google Search Demonstration
     | chicken beak recipes |
     | banana shake recipes |
     | mango shake recipes  |
+    | Vegetarian recipes  |
+
+	
+	
