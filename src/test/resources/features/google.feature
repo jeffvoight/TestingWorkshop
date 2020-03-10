@@ -9,6 +9,7 @@ Feature: Google Search Demonstration
     Given I visit google.com
     When I search for <searchTerm>
     Then I can see more than one page of <searchTerm>
+    Then I should see more recipes
 
     Examples:
     | searchTerm |
@@ -16,3 +17,4 @@ Feature: Google Search Demonstration
     | chicken beak recipes |
     | banana shake recipes |
     | mango shake recipes  |
+    |Orange juice recipes  |
