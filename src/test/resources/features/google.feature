@@ -10,6 +10,7 @@ Feature: Google Search Demonstration
     When I search for <searchTerm>
     Then I can see more than one page of <searchTerm>
     Then I should see more recipes
+    Then I can make more drinks
 
     Examples:
     | searchTerm |
@@ -18,3 +19,5 @@ Feature: Google Search Demonstration
     | banana shake recipes |
     | mango shake recipes  |
     |Orange juice recipes  |
+    |kiwi juice recipes    |
+  |Grape juice recipes   |
