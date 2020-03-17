@@ -18,8 +18,8 @@ Feature: Google Search Demonstration
     | chicken beak recipes |
     | banana shake recipes |
     | mango shake recipes  |
+    | Chicken banana recipes |
     | testing |
     | testing 2 |
-    |ice tea |
-    
-    
+    | ice tea |
+   
