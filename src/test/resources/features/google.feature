@@ -14,12 +14,11 @@ Feature: Google Search Demonstration
 
     Examples:
     | searchTerm |
-    | fish lip recipes |
-    | chicken beak recipes |
-    | banana shake recipes |
+        | chicken beak recipes |
+    | banana shake conflict |
     | mango shake recipes  |
     | Chicken banana recipes |
     | testing |
     | testing 2 |
-    | ice tea |
-   
+    |ice tea |
+
