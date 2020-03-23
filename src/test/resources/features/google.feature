@@ -10,7 +10,6 @@ Feature: Google Search Demonstration
     Given I visit google.com
     When I search for <searchTerm>
     Then I can see more than one page of <searchTerm>
-    
 
     Examples:
     | searchTerm |
@@ -18,8 +17,6 @@ Feature: Google Search Demonstration
     | chicken beak recipes |
     | banana shake recipes |
     | mango shake recipes  |
-    | Chicken banana recipes |
-    | testing |
-    | testing 2 |
-    | ice tea |
-   
+    | Orange juice recipes  |
+    | kiwi juice recipes    |
+    | Grape juice recipes   |
