@@ -31,6 +31,7 @@ public class SimpleSearchSteps {
     public SimpleSearchSteps() {
         log.debug("Creating Chrome Browser.");
         driver = DeviceFactory.getDevice("Chrome");
+        wait = new WebDriverWait(driver, timeOut);
     }
 
     @After
@@ -41,7 +42,6 @@ public class SimpleSearchSteps {
     @Given("^I visit google\\.com$")
     public void i_visit_google_com() {
         driver.get("https://www.google.com");
-        wait = new WebDriverWait(driver, timeOut);
         wait.until(ExpectedConditions.presenceOfElementLocated(googleIconBy));
 
     }
@@ -58,7 +58,6 @@ public class SimpleSearchSteps {
 
     @Then("^I can see more than one page of (.*)$")
     public void i_can_see_more_than_one_page_of(String term) {
-        wait = new WebDriverWait(driver, timeOut);
         wait.until(ExpectedConditions.presenceOfElementLocated(logoBy));
         List<WebElement> elements = driver.findElements(pagesBy);
         log.debug("There are " + elements.size() + " (hopefully 1) elements matching page 2");
