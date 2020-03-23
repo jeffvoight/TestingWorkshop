@@ -32,10 +32,12 @@ public class SimpleSearchSteps {
     By bingLogoBy = By.className("b_logoArea");
     By bingPagesBy = By.className("b_pag");
     WebDriver driver;
+    WebDriverWait wait;
 
     public SimpleSearchSteps() {
         log.debug("Creating Chrome Browser.");
         driver = DeviceFactory.getDevice("Chrome");
+        wait = new WebDriverWait(driver, timeOut);
     }
 
     @After
@@ -46,7 +48,6 @@ public class SimpleSearchSteps {
     @Given("^I visit google\\.com$")
     public void i_visit_google_com() {
         driver.get("https://www.google.com");
-        WebDriverWait wait = new WebDriverWait(driver, timeOut);
         wait.until(ExpectedConditions.presenceOfElementLocated(googleIconBy));
 
     }
