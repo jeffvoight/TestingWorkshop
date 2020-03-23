@@ -6,10 +6,10 @@ Feature: Google Search Demonstration
   
 
   @search
-  Scenario Outline: Simple Google Search
-    Given I visit google.com
-    When I search google for <searchTerm>
-    Then google retrieves more than one page of <searchTerm>
+  Scenario Outline: Simple Bing Search
+    Given I visit bing.com
+    When I search bing for <searchTerm>
+    Then bing retrieves more than one page of <searchTerm>
     
 
     Examples:
