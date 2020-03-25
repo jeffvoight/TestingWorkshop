@@ -49,7 +49,6 @@ public class SimpleSearchSteps {
     public void i_visit_google_com() {
         driver.get("https://www.google.com");
         wait.until(ExpectedConditions.presenceOfElementLocated(googleIconBy));
-
     }
 
     @When("^I search google for (.*)$")
@@ -59,7 +58,6 @@ public class SimpleSearchSteps {
         WebElement submitButton = driver.findElement(submitGoogleBy);
         submitButton.isDisplayed();
         submitButton.click();
-
     }
 
     @Then("^google retrieves more than one page of (.*)$")
