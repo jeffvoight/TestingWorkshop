@@ -8,11 +8,13 @@ import com.afs.tas.devices.DeviceFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.log4testng.Logger;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class SimpleSearchSteps {
@@ -31,6 +33,11 @@ public class SimpleSearchSteps {
     By submitBingBy = By.className("search");
     By bingLogoBy = By.className("b_logoArea");
     By bingPagesBy = By.className("b_pag");
+    By automationPracticeTitle = By.id("header_logo");
+    By automationPracticeWomens = By.xpath("//a[@title=\"Women\"]");
+    By automationPracticeWomensTshirts = By.xpath("//a[@title=\"T-shirts\"]");
+    By automationPracticeWomensTshirtsHover = By.className("cat-name");
+
     WebDriver driver;
     WebDriverWait wait;
 
@@ -96,4 +103,29 @@ public class SimpleSearchSteps {
         Assert.assertTrue(elements.size() == 1);
     }
 
+    @Given("^I visit automationpractice\\.com$")
+    public void iVisitAutomationPracticeCom() {
+        driver.get("http://automationpractice.com/index.php");
+        WebDriverWait wait = new WebDriverWait(driver, timeOut);
+        wait.until(ExpectedConditions.presenceOfElementLocated(automationPracticeTitle));
+    }
+
+    @When("^I shop for Women's clothing$")
+    public void iShopForWomensClothing() {
+        WebElement womensTab = driver.findElement(automationPracticeWomens);
+        wait.until(ExpectedConditions.presenceOfElementLocated(automationPracticeWomens));
+        womensTab.click();
+
+        wait.until(ExpectedConditions.presenceOfElementLocated(automationPracticeWomensTshirts));
+        WebElement tshirtButton = driver.findElement(automationPracticeWomensTshirts);
+        Actions action = new Actions(driver);
+        action.moveToElement(tshirtButton).click();
+    }
+
+    @Then("^I can select Tshirts$")
+    public void iCanSelectTshirts() {
+        wait.until(ExpectedConditions.presenceOfElementLocated(automationPracticeWomensTshirtsHover));
+        WebElement tshirtHover = driver.findElement(automationPracticeWomensTshirtsHover);
+        Assert.assertEquals(tshirtHover.getText(), "T-SHIRTS ");
+    }
 }

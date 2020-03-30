@@ -7,9 +7,9 @@ Feature: Selenium Actions Demonstration
 
   @search
   Scenario Outline: Simple Selenium Actions
-    Given I visit bing.com
-    When I search bing for <searchTerm>
-    Then bing retrieves more than one page of <searchTerm>
+    Given I visit automationpractice.com
+    When I shop for Women's clothing
+    Then I can select Tshirts
     
 
     Examples:
