@@ -1,7 +1,7 @@
 @smoke
-Feature: Google Search Demonstration
+Feature: Bing Search Demonstration
   As a beginner cook
-  I want to search google.com for recipes
+  I want to search bing.com for recipes
   so that I can cook meals for my friends and family
   
 
