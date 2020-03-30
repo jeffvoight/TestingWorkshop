@@ -53,7 +53,7 @@
                             <file>src/test/resources/testng.unit.xml</file>
                             <file>src/test/resources/testng.integration.xml</file>
                         </suiteXmlFiles>
-                        <parallel>methods</parallel>
+                        <parallel>classes</parallel>
                         <threadCount>4</threadCount>
                         <properties>
                             <property>
