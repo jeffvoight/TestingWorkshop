@@ -1,13 +1,12 @@
 package com.afs.tas.steps;
 
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import com.afs.tas.devices.DeviceFactory;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -48,7 +47,11 @@ public class SimpleSearchSteps {
     }
 
     @After
-    public void tearDown() {
+    public void tearDown(Scenario scenario) {
+            if(scenario.isFailed()){
+                byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+                scenario.embed(screenshot, "image/png");
+            }
         driver.quit();
     }
 
@@ -114,8 +117,16 @@ public class SimpleSearchSteps {
     public void iShopForWomensClothing() {
         WebElement womensTab = driver.findElement(automationPracticeWomens);
         wait.until(ExpectedConditions.presenceOfElementLocated(automationPracticeWomens));
+        log.info("Womens tab displayed: " + (womensTab.isDisplayed()? "True":"False"));
+        log.info("Womens tab enabled: " + (womensTab.isEnabled()? "True":"False"));
+        log.info("Womens tab selected: " + (womensTab.isSelected()? "True":"False"));
+        log.info("Womens tab size: " + womensTab.getSize());
+        log.info("Womens tab text: " + womensTab.getText());
         womensTab.click();
+        WebElement search_query_top = driver.findElement(By.id("search_query_top"));
+        search_query_top.sendKeys("This sequence.");
 
+        log.info("Search query top type: " + search_query_top.getTagName());
         wait.until(ExpectedConditions.presenceOfElementLocated(automationPracticeWomensTshirts));
         WebElement tshirtButton = driver.findElement(automationPracticeWomensTshirts);
         Actions action = new Actions(driver);

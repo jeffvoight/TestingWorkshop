@@ -1,6 +1,8 @@
 package com.afs.tas;
 
 import cucumber.api.CucumberOptions;
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
 import cucumber.api.testng.TestNGCucumberRunner;
 import cucumber.api.testng.CucumberFeatureWrapper;
 import org.testng.annotations.AfterClass;
@@ -41,4 +43,5 @@ public class RunCucumberTest {
     public void tearDownClass() throws Exception {
         testNGCucumberRunner.finish();
     }
+
 }
