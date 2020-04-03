@@ -184,36 +184,35 @@
                 <dependency>
                     <groupId>io.cucumber</groupId>
                     <artifactId>cucumber-core</artifactId>
-                    <version>2.4.0</version>
+                    <version>5.1.3</version>
                 </dependency>
 
             <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-jvm -->
             <dependency>
                 <groupId>io.cucumber</groupId>
-                <artifactId>cucumber-jvm</artifactId>
-                <version>2.4.0</version>
-                <type>pom</type>
+                <artifactId>cucumber-java</artifactId>
+                <version>5.1.3</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-testng -->
             <dependency>
                 <groupId>io.cucumber</groupId>
                 <artifactId>cucumber-testng</artifactId>
-                <version>2.4.0</version>
+                <version>5.1.3</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-picocontainer -->
             <dependency>
                 <groupId>io.cucumber</groupId>
                 <artifactId>cucumber-picocontainer</artifactId>
-                <version>2.4.0</version>
+                <version>5.1.3</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/org.testng/testng -->
             <dependency>
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
-                <version>6.13.1</version>
+                <version>7.1.0</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -226,7 +225,7 @@
             <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server -->
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>selenium-server</artifactId>
+                <artifactId>selenium-java</artifactId>
                 <version>3.141.59</version>
             </dependency>
 

@@ -1,19 +1,18 @@
 package com.afs.tas.steps;
 
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 import com.afs.tas.devices.DeviceFactory;
+import com.afs.tas.utilities.Screenshot;
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.log4testng.Logger;
-
-import java.util.Iterator;
 import java.util.List;
 
 public class SimpleSearchSteps {
@@ -49,8 +48,7 @@ public class SimpleSearchSteps {
     @After
     public void tearDown(Scenario scenario) {
             if(scenario.isFailed()){
-                byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-                scenario.embed(screenshot, "image/png");
+                Screenshot.embedScreenshot(scenario, driver, "Failed");
             }
         driver.quit();
     }
