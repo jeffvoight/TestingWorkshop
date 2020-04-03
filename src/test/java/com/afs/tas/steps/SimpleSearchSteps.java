@@ -103,29 +103,39 @@ public class SimpleSearchSteps {
         Assert.assertTrue(elements.size() == 1);
     }
 
+    
+    
     @Given("^I visit automationpractice\\.com$")
-    public void iVisitAutomationPracticeCom() {
+    public void i_visit_automationpractice_com() {
+        // Write code here that turns the phrase above into concrete actions
         driver.get("http://automationpractice.com/index.php");
-        WebDriverWait wait = new WebDriverWait(driver, timeOut);
         wait.until(ExpectedConditions.presenceOfElementLocated(automationPracticeTitle));
     }
 
-    @When("^I shop for Women's clothing$")
-    public void iShopForWomensClothing() {
-        WebElement womensTab = driver.findElement(automationPracticeWomens);
-        wait.until(ExpectedConditions.presenceOfElementLocated(automationPracticeWomens));
-        womensTab.click();
-
-        wait.until(ExpectedConditions.presenceOfElementLocated(automationPracticeWomensTshirts));
-        WebElement tshirtButton = driver.findElement(automationPracticeWomensTshirts);
-        Actions action = new Actions(driver);
-        action.moveToElement(tshirtButton).click();
-    }
+    @When("^I shop for Women clothing$")
+    public void i_shop_for_Women_clothing() throws InterruptedException {
+        // Write code here that turns the phrase above into concrete actions
+    	
+    	Actions a = new Actions(driver);
+    	WebElement automationPracticeWomensM = driver.findElement(By.xpath("//a[@title=\"Women\"]"));
+    	
+    	a.moveToElement(automationPracticeWomensM).build().perform();
+    	Thread.sleep(3000);
+    	WebElement tShirt = driver.findElement(By.xpath("//*[@id=\"block_top_menu\"]/ul/li[1]/ul/li[1]/ul/li[1]/a"));
+    	tShirt.click();
+    }  
 
     @Then("^I can select Tshirts$")
-    public void iCanSelectTshirts() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(automationPracticeWomensTshirtsHover));
-        WebElement tshirtHover = driver.findElement(automationPracticeWomensTshirtsHover);
-        Assert.assertEquals(tshirtHover.getText(), "T-SHIRTS ");
+    public void i_can_select_Tshirts() {
+        // Write code here that turns the phrase above into concrete actions
+    	WebElement tShirtHover = driver.findElement(By.className("cat-name"));
+    	
+    	Assert.assertEquals(tShirtHover.getText(), "T-SHIRTS ");
+    	log.info("text  matcjed!");
     }
+    
+    
+    
+    
+    
 }

@@ -8,7 +8,7 @@ Feature: Selenium Actions Demonstration
   @search
   Scenario Outline: Simple Selenium Actions
     Given I visit automationpractice.com
-    When I shop for Women's clothing
+    When I shop for Women clothing
     Then I can select Tshirts
     
 

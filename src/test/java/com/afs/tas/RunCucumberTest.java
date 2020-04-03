@@ -9,7 +9,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @CucumberOptions(
-        features = "src/test/resources/features",
+        features = "src/test/resources/features/selenium.features",
         glue = {"com.afs.tas.steps"},
         tags = {"not @Ignore"},
         format = {

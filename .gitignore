@@ -7,3 +7,4 @@ TestingWorkshop.iml
 .project
 .settings/*
 test.txt
+/bin/
