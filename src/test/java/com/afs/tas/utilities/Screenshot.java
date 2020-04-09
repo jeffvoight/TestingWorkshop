@@ -18,4 +18,9 @@ public class Screenshot {
         scenario.embed(bytes, "image/png", screenshotName);
     }
 
+    public static void embedScreenshot(Scenario scenario, WebDriver webDriver) {
+        String screenshotName = scenario.getName() + " - " + scenario.getLine();
+        embedScreenshot(scenario, webDriver, screenshotName);
+    }
+
 }

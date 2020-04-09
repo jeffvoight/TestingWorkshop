@@ -3,16 +3,17 @@ package com.afs.tas.steps;
 import com.afs.tas.devices.DeviceFactory;
 import com.afs.tas.utilities.Screenshot;
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.log4testng.Logger;
+
 import java.util.List;
 
 public class SimpleSearchSteps {
@@ -38,6 +39,7 @@ public class SimpleSearchSteps {
 
     WebDriver driver;
     WebDriverWait wait;
+    private Scenario scenario;
 
     public SimpleSearchSteps() {
         log.debug("Creating Chrome Browser.");
@@ -45,11 +47,16 @@ public class SimpleSearchSteps {
         wait = new WebDriverWait(driver, timeOut);
     }
 
+    @Before
+    public void setup(Scenario scenario){
+        this.scenario = scenario;
+    }
+
     @After
     public void tearDown(Scenario scenario) {
-            if(scenario.isFailed()){
-                Screenshot.embedScreenshot(scenario, driver, "Failed");
-            }
+        if (scenario.isFailed()) {
+            Screenshot.embedScreenshot(scenario, driver);
+        }
         driver.quit();
     }
 
@@ -60,7 +67,7 @@ public class SimpleSearchSteps {
     }
 
     @When("^I search google for (.*)$")
-    public void i_search_for(String term){
+    public void i_search_for(String term) {
         WebElement searchField = driver.findElement(searchGoogleBy);
         searchField.sendKeys(term);
         WebElement submitButton = driver.findElement(submitGoogleBy);
@@ -86,7 +93,7 @@ public class SimpleSearchSteps {
     }
 
     @When("^I search bing for (.*)$")
-    public void i_search_bing_for(String term){
+    public void i_search_bing_for(String term) {
         WebElement searchField = driver.findElement(searchBingBy);
         searchField.sendKeys(term);
         WebElement submitButton = driver.findElement(submitBingBy);
@@ -102,39 +109,5 @@ public class SimpleSearchSteps {
         List<WebElement> elements = driver.findElements(bingPagesBy);
         log.debug("There are " + elements.size() + " (hopefully 1) elements matching page 2");
         Assert.assertTrue(elements.size() == 1);
-    }
-
-    @Given("^I visit automationpractice\\.com$")
-    public void iVisitAutomationPracticeCom() {
-        driver.get("http://automationpractice.com/index.php");
-        WebDriverWait wait = new WebDriverWait(driver, timeOut);
-        wait.until(ExpectedConditions.presenceOfElementLocated(automationPracticeTitle));
-    }
-
-    @When("^I shop for Women's clothing$")
-    public void iShopForWomensClothing() {
-        WebElement womensTab = driver.findElement(automationPracticeWomens);
-        wait.until(ExpectedConditions.presenceOfElementLocated(automationPracticeWomens));
-        log.info("Womens tab displayed: " + (womensTab.isDisplayed()? "True":"False"));
-        log.info("Womens tab enabled: " + (womensTab.isEnabled()? "True":"False"));
-        log.info("Womens tab selected: " + (womensTab.isSelected()? "True":"False"));
-        log.info("Womens tab size: " + womensTab.getSize());
-        log.info("Womens tab text: " + womensTab.getText());
-        womensTab.click();
-        WebElement search_query_top = driver.findElement(By.id("search_query_top"));
-        search_query_top.sendKeys("This sequence.");
-
-        log.info("Search query top type: " + search_query_top.getTagName());
-        wait.until(ExpectedConditions.presenceOfElementLocated(automationPracticeWomensTshirts));
-        WebElement tshirtButton = driver.findElement(automationPracticeWomensTshirts);
-        Actions action = new Actions(driver);
-        action.moveToElement(tshirtButton).click();
-    }
-
-    @Then("^I can select Tshirts$")
-    public void iCanSelectTshirts() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(automationPracticeWomensTshirtsHover));
-        WebElement tshirtHover = driver.findElement(automationPracticeWomensTshirtsHover);
-        Assert.assertEquals(tshirtHover.getText(), "T-SHIRTS ");
     }
 }
