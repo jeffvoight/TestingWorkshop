@@ -41,6 +41,7 @@ public class SimpleSearchSteps {
     WebDriverWait wait;
     private Scenario scenario;
 
+
     public SimpleSearchSteps() {
         log.debug("Creating Chrome Browser.");
         driver = DeviceFactory.getDevice("Chrome");
@@ -50,6 +51,7 @@ public class SimpleSearchSteps {
     @Before
     public void setup(Scenario scenario){
         this.scenario = scenario;
+
     }
 
     @After
@@ -80,6 +82,7 @@ public class SimpleSearchSteps {
         WebDriverWait wait = new WebDriverWait(driver, timeOut);
         wait.until(ExpectedConditions.presenceOfElementLocated(googleLogoBy));
         List<WebElement> elements = driver.findElements(googlePagesBy);
+
         log.debug("There are " + elements.size() + " (hopefully 1) elements matching page 2");
         Assert.assertTrue(elements.size() == 1);
     }
