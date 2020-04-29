@@ -1,13 +1,14 @@
 package com.afs.tas.steps;
 
-import cucumber.api.java.After;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 import com.afs.tas.devices.DeviceFactory;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import com.afs.tas.utilities.Screenshot;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -21,12 +22,25 @@ public class SimpleSearchSteps {
     long timeOut = (long) 5.0;
 
     By googleIconBy = By.id("hplogo");
-    By searchBy = By.name("q");
-    By submitBy = By.name("btnK");
-    By logoBy = By.id("logo");
-    By pagesBy = By.xpath("//a[@aria-label=\"Page 2\"]");
+    By searchGoogleBy = By.name("q");
+    By submitGoogleBy = By.name("btnK");
+    By googleLogoBy = By.id("logo");
+    By googlePagesBy = By.xpath("//a[@aria-label=\"Page 2\"]");
+
+    By bingIconBy = By.id("b_logo");
+    By searchBingBy = By.id("sb_form_q");
+    By submitBingBy = By.className("search");
+    By bingLogoBy = By.className("b_logoArea");
+    By bingPagesBy = By.className("b_pag");
+    By automationPracticeTitle = By.id("header_logo");
+    By automationPracticeWomens = By.xpath("//a[@title=\"Women\"]");
+    By automationPracticeWomensTshirts = By.xpath("//a[@title=\"T-shirts\"]");
+    By automationPracticeWomensTshirtsHover = By.className("cat-name");
+
     WebDriver driver;
     WebDriverWait wait;
+    private Scenario scenario;
+
 
     public SimpleSearchSteps() {
         log.debug("Creating Chrome Browser.");
@@ -34,8 +48,17 @@ public class SimpleSearchSteps {
         wait = new WebDriverWait(driver, timeOut);
     }
 
+    @Before
+    public void setup(Scenario scenario){
+        this.scenario = scenario;
+
+    }
+
     @After
-    public void tearDown() {
+    public void tearDown(Scenario scenario) {
+        if (scenario.isFailed()) {
+            Screenshot.embedScreenshot(scenario, driver);
+        }
         driver.quit();
     }
 
@@ -43,26 +66,51 @@ public class SimpleSearchSteps {
     public void i_visit_google_com() {
         driver.get("https://www.google.com");
         wait.until(ExpectedConditions.presenceOfElementLocated(googleIconBy));
+    }
+
+    @When("^I search google for (.*)$")
+    public void i_search_for(String term) {
+        WebElement searchField = driver.findElement(searchGoogleBy);
+        searchField.sendKeys(term);
+        WebElement submitButton = driver.findElement(submitGoogleBy);
+        submitButton.isDisplayed();
+        submitButton.click();
+    }
+
+    @Then("^google retrieves more than one page of (.*)$")
+    public void google_retrieves_more_than_one_page_of(String term) {
+        WebDriverWait wait = new WebDriverWait(driver, timeOut);
+        wait.until(ExpectedConditions.presenceOfElementLocated(googleLogoBy));
+        List<WebElement> elements = driver.findElements(googlePagesBy);
+
+        log.debug("There are " + elements.size() + " (hopefully 1) elements matching page 2");
+        Assert.assertTrue(elements.size() == 1);
+    }
+
+    @Given("^I visit bing\\.com$")
+    public void i_visit_bing_com() {
+        driver.get("https://www.bing.com");
+        WebDriverWait wait = new WebDriverWait(driver, timeOut);
+        wait.until(ExpectedConditions.presenceOfElementLocated(bingIconBy));
 
     }
 
-    @When("^I search for (.*)$")
-    public void i_search_for(String term){
-        WebElement searchField = driver.findElement(searchBy);
+    @When("^I search bing for (.*)$")
+    public void i_search_bing_for(String term) {
+        WebElement searchField = driver.findElement(searchBingBy);
         searchField.sendKeys(term);
-        WebElement submitButton = driver.findElement(submitBy);
+        WebElement submitButton = driver.findElement(submitBingBy);
         submitButton.isDisplayed();
         submitButton.click();
 
     }
 
-    @Then("^I can see more than one page of (.*)$")
-    public void i_can_see_more_than_one_page_of(String term) {
-        wait.until(ExpectedConditions.presenceOfElementLocated(logoBy));
-        List<WebElement> elements = driver.findElements(pagesBy);
+    @Then("^bing retrieves more than one page of (.*)$")
+    public void bing_retrieves_more_than_one_page_of(String term) {
+        WebDriverWait wait = new WebDriverWait(driver, timeOut);
+        wait.until(ExpectedConditions.presenceOfElementLocated(bingLogoBy));
+        List<WebElement> elements = driver.findElements(bingPagesBy);
         log.debug("There are " + elements.size() + " (hopefully 1) elements matching page 2");
         Assert.assertTrue(elements.size() == 1);
     }
-
-
 }
